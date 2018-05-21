@@ -8,14 +8,14 @@ body {
   font-family: 'Raleway', sans-serif;
   background-color: rgb(255,242,215);
 }
-li {
+.book-information {
   font-size: 1.5rem;
   text-align: center;
   line-height: 3.5rem;
   color: rgb(73,52,43);
 }
-li:first-letter {text-transform: uppercase;}
-h1 {
+.book-information:first-letter {text-transform: uppercase;}
+.top-header {
   text-align: center;
   font-size: 3rem;
   padding-top: 3.5rem;
@@ -23,7 +23,7 @@ h1 {
   color: rgb(73,122,99);
   font-weight: normal;
 }
-h2 {
+.book-section-header {
   text-transform: capitalize;
   text-align: center;
   font-size: 2.5rem;
@@ -32,7 +32,7 @@ h2 {
   color: rgb(150,152,190);
   font-weight: normal;
 }
-img {
+.book-cover {
   width: 350px;
   padding: 3rem;
 }

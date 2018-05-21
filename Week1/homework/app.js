@@ -39,50 +39,55 @@
     the_happy_prince: { title: 'The Happy Prince', language: 'English', author: 'Oscar Wilde', year: '1888' }
   };
 
-  function main() {
+  const covers = {
+    the_nose: './img/the_nose.jpg',
+    the_overcoat: './img/the_overcoat.jpg',
+    the_collected_works: './img/the_collected_works.jpg',
+    palace_of_desire: './img/palace_of_desire.jpg',
+    sugar_street: './img/sugar_street.jpg',
+    children_of_gebelawi: './img/children_of_gebelawi.jpg',
+    the_thief_and_the_dogs: './img/the_thief_and_the_dogs.jpg',
+    autumn_quail: './img/autumn_quail.jpg',
+    a_tale_of_two_cities: './img/a_tale_of_two_cities.jpg',
+    the_happy_prince: './img/the_happy_prince.jpg'
+  };
+
+  function main(objectOfBooks, bookCovers) {
     const container = document.getElementById('page_content');
     const topHeader = document.createElement('h1');
     topHeader.innerHTML = 'Books I have Read';
+    topHeader.setAttribute('class', 'top-header');
     container.appendChild(topHeader);
 
-    for (const key in books) {
-      const header = document.createElement('h2');
-      header.innerHTML = key.replace(/_/g, ' ');
-      container.appendChild(header);
-      const list = document.createElement('ul');
-      list.setAttribute('id', key);
-      container.appendChild(list);
-      const arr = books[key];
+    for (const key in objectOfBooks) {
+      const bookSectionHeader = document.createElement('h2');
+      bookSectionHeader.setAttribute('class', 'book-section-header');
+      bookSectionHeader.innerHTML = key.replace(/_/g, ' ');
+      container.appendChild(bookSectionHeader);
+      const bookInformationList = document.createElement('ul');
+      bookInformationList.setAttribute('id', key);
+      container.appendChild(bookInformationList);
+      const arr = objectOfBooks[key];
 
       for (const key in arr) {
-        const details = document.createElement('li');
-        details.innerHTML = key + ' : ' + arr[key];
-        list.appendChild(details);
+        const bookInformation = document.createElement('li');
+        bookInformation.setAttribute('class', 'book-information');
+        bookInformation.innerHTML = key + ' : ' + arr[key];
+        bookInformationList.appendChild(bookInformation);
       }
     }
 
-    const covers = {
-      the_nose: './img/the_nose.jpg',
-      the_overcoat: './img/the_overcoat.jpg',
-      the_collected_works: './img/the_collected_works.jpg',
-      palace_of_desire: './img/palace_of_desire.jpg',
-      sugar_street: './img/sugar_street.jpg',
-      children_of_gebelawi: './img/children_of_gebelawi.jpg',
-      the_thief_and_the_dogs: './img/the_thief_and_the_dogs.jpg',
-      autumn_quail: './img/autumn_quail.jpg',
-      a_tale_of_two_cities: './img/a_tale_of_two_cities.jpg',
-      the_happy_prince: './img/the_happy_prince.jpg'
-    };
-
-    for (const key in covers) {
-      const image = document.createElement('img');
-      image.setAttribute('src', covers[key]);
-      image.setAttribute('alt', 'cover_photo_for_a_book_named_' + key);
-      const listedImage = document.createElement('li');
-      listedImage.appendChild(image);
-      document.getElementById(key).appendChild(listedImage);
+    for (const key in bookCovers) {
+      const bookCover = document.createElement('img');
+      bookCover.setAttribute('class', 'book-cover');
+      bookCover.setAttribute('src', bookCovers[key]);
+      bookCover.setAttribute('alt', 'cover photo for a book named ' + key.replace(/_/g, ' '));
+      const listedCoverImage = document.createElement('li');
+      listedCoverImage.setAttribute('class', 'book-information');
+      listedCoverImage.appendChild(bookCover);
+      document.getElementById(key).appendChild(listedCoverImage);
     }
   }
 
-  window.addEventListener('load', main);
+  window.addEventListener('load', main(books, covers));
 }
